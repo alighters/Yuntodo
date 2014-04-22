@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Yuntodo</string>
+    <string name="app_name">Yunote</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+
+    <string-array name="category_names">
+        <item>未分类</item>
+        <item>新闻</item>
+        <item>游戏</item>
+        <item>科技</item>
+    </string-array>
 
 </resources>
