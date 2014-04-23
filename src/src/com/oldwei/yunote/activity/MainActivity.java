@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.oldwei.yunote.R;
+import com.oldwei.yunote.activity.fragment.LinksFragment;
 
 public class MainActivity extends BaseActivty {
 
@@ -85,7 +86,7 @@ public class MainActivity extends BaseActivty {
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on
         // position
-        Fragment fragment = new Fragment();
+        Fragment fragment = new LinksFragment();
         Bundle args = new Bundle();
         // args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
         fragment.setArguments(args);
