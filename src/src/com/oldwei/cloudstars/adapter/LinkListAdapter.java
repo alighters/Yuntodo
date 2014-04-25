@@ -1,18 +1,30 @@
-package com.oldwei.yunote.activity.adapter;
+package com.oldwei.cloudstars.adapter;
 
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.oldwei.yunote.R;
-import com.oldwei.yunote.vo.LinkVo;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.oldwei.cloudstars.R;
+import com.oldwei.cloudstarts.vo.LinkVo;
 
 public class LinkListAdapter extends BaseAdapter {
+    private DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showStubImage(R.drawable.url_default)
+            .showImageForEmptyUri(R.drawable.url_default) // resource or
+            .showImageOnFail(R.drawable.url_default) // resource or drawable
+            .cacheInMemory(true) // default
+            .cacheOnDisc(true) // default
+            .bitmapConfig(Bitmap.Config.RGB_565) // default
+            .build();
 
     private List<LinkVo> mLinkVoList;
     private Context mContext;
@@ -49,21 +61,24 @@ public class LinkListAdapter extends BaseAdapter {
                     R.layout.home_link_fragment_item, null);
             TextView titleText = (TextView) convertView
                     .findViewById(R.id.link_text);
-
+            ImageView iconView = (ImageView) convertView
+                    .findViewById(R.id.link_icon);
             holder = new ViewHolder();
             holder.titleText = titleText;
-
+            holder.iconView = iconView;
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.titleText.setText(mLinkVoList.get(position).getTitle());
+        ImageLoader.getInstance().displayImage(
+                mLinkVoList.get(position).getIcon(), holder.iconView, options);
         return convertView;
     }
 
     class ViewHolder {
         TextView titleText;
-
+        ImageView iconView;
     }
 
 }

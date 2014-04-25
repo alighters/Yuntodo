@@ -1,4 +1,4 @@
-package com.oldwei.yunote.activity;
+package com.oldwei.cloudstars.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;

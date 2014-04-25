@@ -1,3 +1,29 @@
+﻿{
+"links":[
 {
-	link:{}
+"icon":"http://www.nodebeginner.org/favicon.png",
+"url":"http://www.nodebeginner.org",
+"title":"The Node Beginner"
+},
+{
+"icon":"http://b3.hoopchina.com.cn/common/favicon.ico",
+"url":"http://nba.hupu.com",
+"title":"NBA|虎扑篮球 - 最篮球的世界"
+},
+{
+"icon":"http://static.cnblogs.com/favicon.ico",
+"url":"http://www.cnblogs.com",
+"title":"博客园 - 开发者的网上家园"
+},
+{
+"icon":"http://tb1.bdstatic.com/tb/favicon.ico",
+"url":"http://tieba.baidu.com/f?ie=utf-8&kw=%E9%AD%94%E5%A4%A9%E8%AE%B0",
+"title":"魔天记吧_百度贴吧"
+},
+{
+"icon":"http://bbs.lupaworld.com/static/image/common/portal.ico",
+"url":"http://code.lupaworld.com/forum.php",
+"title":"论坛列表   - LUPA开源社区   "
+}
+]
 }

@@ -1,4 +1,4 @@
-package com.oldwei.yunote.activity;
+package com.oldwei.cloudstars.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.oldwei.yunote.R;
-import com.oldwei.yunote.activity.fragment.LinksFragment;
+import com.oldwei.cloudstars.R;
+import com.oldwei.cloudstars.fragment.LinksFragment;
 
 public class MainActivity extends BaseActivty {
 
