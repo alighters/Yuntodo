@@ -51,7 +51,7 @@ public class LinksFragment extends Fragment {
         setData();
         mListAdapter = new LinkListAdapter(getActivity(), mLinkVoList);
         mListView.setAdapter(mListAdapter);
-        mListView.setOnItemClickListener(mListViewItemClickListener);
+         mListView.setOnItemClickListener(mListViewItemClickListener);
     }
 
     public void refresh() {
@@ -110,8 +110,8 @@ public class LinksFragment extends Fragment {
         public void onItemClick(AdapterView<?> parent, View view, int position,
                 long id) {
             Intent it = new Intent(getActivity(), WebActivity.class);
-            it.putExtra(WebActivity.WEB_LOADED_URL, mLinkVoList.get(position)
-                    .getUrl());
+            it.putExtra(WebActivity.WEB_LOADED_LINKVO,
+                    mLinkVoList.get(position));
             startActivity(it);
         }
     };
