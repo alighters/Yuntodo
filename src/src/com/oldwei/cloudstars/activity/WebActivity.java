@@ -2,6 +2,7 @@ package com.oldwei.cloudstars.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -23,7 +24,7 @@ public class WebActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.web_activity);
         mLinkVo = getIntent().getParcelableExtra(WEB_LOADED_LINKVO);
         initView();
@@ -32,6 +33,7 @@ public class WebActivity extends Activity {
     }
 
     private void initView() {
+        setTitle(mLinkVo.getTitle());
         mWebView = (WebView) findViewById(R.id.web_view);
     }
 
@@ -41,19 +43,17 @@ public class WebActivity extends Activity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                WebActivity.this.setTitle(mLinkVo.getTitle());
                 if (newProgress == mPercetageMax) {
                     // finish the loading
                 } else {
-                    WebActivity.this.setProgress(newProgress);
 
                 }
+                WebActivity.this.setProgress(newProgress);
             }
         });
         mWebView.setWebViewClient(new WebViewClient() {
 
-            public void onReceivedError(WebView view, int errorCode,
-                    String description, String failingUrl) {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 // Handle the error
             }
 
@@ -73,7 +73,8 @@ public class WebActivity extends Activity {
         // mWebView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
         mWebView.getSettings().setSupportZoom(true);
         mWebView.getSettings().setBuiltInZoomControls(true);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+            mWebView.getSettings().setDisplayZoomControls(false);
         mWebView.getSettings().setAllowFileAccess(true);
         mWebView.loadUrl(mLinkVo.getUrl());
     }
@@ -84,7 +85,6 @@ public class WebActivity extends Activity {
             mWebView.goBack();
             return true;
         }
-        finish();
-        return false;
+        return super.onKeyDown(keyCode, event);
     }
 }
