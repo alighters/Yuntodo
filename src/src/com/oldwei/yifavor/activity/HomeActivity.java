@@ -1,39 +1,40 @@
-package com.oldwei.cloudstars.activity;
+package com.oldwei.yifavor.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 
-import com.oldwei.cloudstars.R;
-import com.oldwei.cloudstars.fragment.LinksFragment;
+import com.oldwei.yifavor.R;
+import com.oldwei.yifavor.fragment.HomeLeftFragment;
+import com.oldwei.yifavor.fragment.LinksFragment;
+import com.oldwei.yifavor.utils.JSONUtils;
 
-public class MainActivity extends BaseActivty {
+public class HomeActivity extends BaseActivty {
 
     private DrawerLayout mLeftDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
-    private ListView mLeftDrawerList;
-    private String[] mPlanetTitles;
     private CharSequence mTitle;
+    private LinksFragment mLinkFragment;
+    private HomeLeftFragment mHomeLeftFragment;
+    private LinearLayout mHomeLeftLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
         initView();
-        setData();
+        initFragment();
     }
 
     private void initView() {
+        mHomeLeftLayout = (LinearLayout) findViewById(R.id.left_drawer_layout);
+        mHomeLeftFragment = (HomeLeftFragment) getSupportFragmentManager().findFragmentById(R.id.left_drawer);
         mLeftDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mLeftDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
         mLeftDrawerLayout, /* DrawerLayout object */
         R.drawable.ic_drawer, /* nav drawer icon to replace 'Up' caret */
@@ -56,50 +57,27 @@ public class MainActivity extends BaseActivty {
         // Set the drawer toggle as the DrawerListener
         mLeftDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        mHomeLeftFragment.setCategoryItemClickListener(new HomeLeftFragment.CategoryItemClickListener() {
+
+            @Override
+            public void checkTitle(String titleName) {
+                mLinkFragment.refreshData(JSONUtils.loadLinkList());
+                mLeftDrawerLayout.closeDrawer(mHomeLeftLayout);
+                setTitle(titleName);
+            }
+        });
+
     }
 
-    /**
-     * Set the data for the left drawer, get the category about the collection.
-     */
-    private void setData() {
-        mPlanetTitles = getResources().getStringArray(R.array.category_names);
-        // Set the adapter for the list view
-        mLeftDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.home_left_list_item, mPlanetTitles));
-        // Set the list's click listener
-        mLeftDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-    }
-
-    private class DrawerItemClickListener implements
-            ListView.OnItemClickListener {
-        @SuppressWarnings("rawtypes")
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position,
-                long id) {
-            selectItem(position);
-        }
-    }
-
-    /** Swaps fragments in the main content view */
-    private void selectItem(int position) {
-        // Create a new fragment and specify the planet to show based on
-        // position
-        Fragment fragment = new LinksFragment();
+    private void initFragment() {
+        mLinkFragment = new LinksFragment();
         Bundle args = new Bundle();
         // args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
+        mLinkFragment.setArguments(args);
 
         // Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, fragment).commit();
-
-        // Highlight the selected item, update the title, and close the drawer
-        mLeftDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
-        mLeftDrawerLayout.closeDrawer(mLeftDrawerList);
+        fragmentManager.beginTransaction().add(R.id.content_frame, mLinkFragment).commit();
     }
 
     @Override

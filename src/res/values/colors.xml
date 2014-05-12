@@ -1,5 +1,7 @@
 <resources>
 
     <color name="common_white">#fff</color>
+    <color name="common_gray">#ccc</color>
+    <color name="common_bg_color">#eaeaea</color>
 
 </resources>

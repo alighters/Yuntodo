@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CloudStars</string>
+    <string name="app_name">易收藏</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">打开</string>
@@ -14,4 +14,11 @@
         <item>科技</item>
     </string-array>
 
-</resources>
+    <!-- home left menu -->
+    <string name="add_category_text_hint">请输入类别名称</string>
+    <string name="add_category_btn_name">添加</string>
+    <string name="add_category_btn_ok_name">完成</string>
+    <string name="add_category_btn_cancel_name">取消</string>
+    
+    <!-- web page -->
+</resources>

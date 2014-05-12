@@ -1,4 +1,4 @@
-package com.oldwei.cloudstars.adapter;
+package com.oldwei.yifavor.adapter;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.oldwei.cloudstars.R;
-import com.oldwei.cloudstarts.vo.LinkVo;
+import com.oldwei.yifavor.R;
+import com.oldwei.yifavor.model.LinkModel;
 
 public class LinkListAdapter extends BaseAdapter {
     private DisplayImageOptions options = new DisplayImageOptions.Builder()
@@ -26,25 +26,25 @@ public class LinkListAdapter extends BaseAdapter {
             .bitmapConfig(Bitmap.Config.RGB_565) // default
             .build();
 
-    private List<LinkVo> mLinkVoList;
+    private List<LinkModel> mLinkModelList;
     private Context mContext;
 
-    public LinkListAdapter(Context context, List<LinkVo> linkVoList) {
+    public LinkListAdapter(Context context, List<LinkModel> LinkModelList) {
         this.mContext = context;
-        this.mLinkVoList = linkVoList;
+        this.mLinkModelList = LinkModelList;
     }
 
     @Override
     public int getCount() {
-        if (mLinkVoList != null)
-            return mLinkVoList.size();
+        if (mLinkModelList != null)
+            return mLinkModelList.size();
         return 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (mLinkVoList != null)
-            return mLinkVoList.get(position);
+        if (mLinkModelList != null)
+            return mLinkModelList.get(position);
         return null;
     }
 
@@ -70,9 +70,9 @@ public class LinkListAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.titleText.setText(mLinkVoList.get(position).getTitle());
+        holder.titleText.setText(mLinkModelList.get(position).getTitle());
         ImageLoader.getInstance().displayImage(
-                mLinkVoList.get(position).getIcon(), holder.iconView, options);
+                mLinkModelList.get(position).getIcon(), holder.iconView, options);
         return convertView;
     }
 
