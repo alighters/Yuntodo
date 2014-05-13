@@ -1,28 +1,34 @@
 ﻿{
     "categories":[
         {
-            "id":0,
+            "id":1,
             "name":"常用",
             "count":0,
             "orderId":0
         },
         {
-            "id":1,
+            "id":2,
             "name":"未分类",
             "count":0,
             "orderId":0
         },
         {
-            "id":2,
+            "id":3,
             "name":"Android学习",
             "count":0,
             "orderId":0
         },
         {
-            "id":3,
+            "id":4,
+            "name":"新闻",
+            "count":0,
+            "orderId":0
+        },
+        {
+            "id":5,
             "name":"待看",
             "count":0,
             "orderId":0
-        }
+        }	
     ]
 }
