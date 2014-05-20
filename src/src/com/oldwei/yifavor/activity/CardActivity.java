@@ -28,7 +28,7 @@ public class CardActivity extends Activity {
         setContentView(R.layout.card_activity);
         initView();
         setData();
-        addData();
+        addData(); 
     }
 
     private void initView() {

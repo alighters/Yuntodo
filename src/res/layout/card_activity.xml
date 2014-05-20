@@ -3,8 +3,10 @@
     android:layout_height="match_parent" >
 
     <it.gmariotti.cardslib.library.view.CardListView
+        xmlns:card="http://schemas.android.com/apk/res-auto"
         android:id="@+id/myList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        card:list_card_layout_resourceID="@layout/list_card_thumbnail_layout" />
 
 </FrameLayout>
