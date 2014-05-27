@@ -10,25 +10,25 @@ import com.oldwei.yifavor.utils.JSONUtils;
 
 public class LoadDataHelper {
 
-	public static void saveLinksData() {
-		LinkService service = new LinkService();
-		for (LinkModel model : JSONUtils.loadLinkList()) {
-			try {
-				service.update(model);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public static void saveLinksData() {
+        LinkService service = new LinkService();
+        for (LinkModel model : JSONUtils.loadLinkList()) {
+            try {
+                service.add(model);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-	public static void saveCategoriesData() {
-		CategoryService service = new CategoryService();
-		for (CategoryModel model : JSONUtils.loadCategoryList()) {
-			try {
-				service.update(model);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public static void saveCategoriesData() {
+        CategoryService service = new CategoryService();
+        for (CategoryModel model : JSONUtils.loadCategoryList()) {
+            try {
+                service.add(model);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

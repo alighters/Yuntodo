@@ -36,8 +36,8 @@ public class WebActivity extends Activity {
     private Button mOpenAnotherBrowser;
     private Button mAddNewLink;
     private LinkModel mCurrentLinkModel = new LinkModel();
+
     // TODO: Add a stack to save the link scanning records.
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,8 @@ public class WebActivity extends Activity {
         mCurrentLinkModel.setUrl(mLinkModel.getUrl());
         initView();
         initListener();
-         setH5Cache();
-         setCacheWay();
+        setH5Cache();
+        setCacheWay();
         loadView();
     }
 
@@ -166,15 +166,11 @@ public class WebActivity extends Activity {
                 startActivity(intent);
                 break;
             case R.id.web_page_add_new:
-                int result = 0;
                 try {
-                    result = new LinkService().add(mCurrentLinkModel);
+                    new LinkService().add(mCurrentLinkModel);
+                    Toast.makeText(WebActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }
-                if (result > 0) {
-                    Toast.makeText(WebActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                } else {
                     Toast.makeText(WebActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
                 }
                 break;

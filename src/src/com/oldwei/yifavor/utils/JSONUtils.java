@@ -47,6 +47,7 @@ public class JSONUtils {
                 vo.setIcon(jsonObject.getString("icon"));
                 vo.setUrl(jsonObject.getString("url"));
                 vo.setTitle(jsonObject.getString("title"));
+                vo.setCategoryId(jsonObject.getInt("categoryId"));
                 LinkModelList.add(vo);
             }
 
