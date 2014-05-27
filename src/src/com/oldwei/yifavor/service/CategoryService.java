@@ -10,33 +10,33 @@ import com.oldwei.yifavor.model.CategoryModel;
 import com.oldwei.yifavor.utils.DBHelper;
 
 public class CategoryService {
-    private Dao<CategoryModel, Integer> categoryDao;
+	private Dao<CategoryModel, Integer> categoryDao;
 
-    public CategoryService() {
-        categoryDao = DBHelper.getInstance().getCatogoryDao();
-    }
+	public CategoryService() {
+		categoryDao = DBHelper.getInstance().getCatogoryDao();
+	}
 
-    public List<CategoryModel> queryAll() throws SQLException {
-        List<CategoryModel> list = null;
-        QueryBuilder<CategoryModel, Integer> qb = categoryDao.queryBuilder();
-        qb.orderBy("orderId", true);
-        list = qb.query();
-        return list;
-    }
+	public List<CategoryModel> queryAll() throws SQLException {
+		List<CategoryModel> list = null;
+		QueryBuilder<CategoryModel, Integer> qb = categoryDao.queryBuilder();
+		qb.orderBy("orderId", true);
+		list = qb.query();
+		return list;
+	}
 
-    public void add(CategoryModel model) throws SQLException {
-        // 获取Model的最大orderId;
-        QueryBuilder<CategoryModel, Integer> qb = categoryDao.queryBuilder();
-        qb.selectRaw("MAX(orderId)");
-        GenericRawResults<String[]> result;
-        result = categoryDao.queryRaw(qb.prepareStatementString());
-        String[] values = result.getFirstResult();
-        if (values[0] != null)
-            model.setOrderId(Integer.valueOf(values[0]) + 1);
-        categoryDao.createOrUpdate(model);
-    }
-    
-    public void update(CategoryModel model) throws SQLException{
-        categoryDao.update(model);
-    }
+	public void add(CategoryModel model) throws SQLException {
+		// 获取Model的最大orderId;
+		QueryBuilder<CategoryModel, Integer> qb = categoryDao.queryBuilder();
+		qb.selectRaw("MAX(orderId)");
+		GenericRawResults<String[]> result;
+		result = categoryDao.queryRaw(qb.prepareStatementString());
+		String[] values = result.getFirstResult();
+		if (values[0] != null)
+			model.setOrderId(Integer.valueOf(values[0]) + 1);
+		categoryDao.createOrUpdate(model);
+	}
+
+	public void update(CategoryModel model) throws SQLException {
+		categoryDao.update(model);
+	}
 }
