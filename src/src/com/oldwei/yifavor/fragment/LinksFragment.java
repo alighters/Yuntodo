@@ -12,16 +12,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 
 import com.oldwei.yifavor.R;
 import com.oldwei.yifavor.activity.WebActivity;
 import com.oldwei.yifavor.adapter.LinkListAdapter;
 import com.oldwei.yifavor.model.LinkModel;
+import com.oldwei.yifavor.view.SwipeDismissListView;
 
 public class LinksFragment extends Fragment {
 
-    private ListView mListView;
+    private SwipeDismissListView mListView;
     private View mView;
     private BaseAdapter mListAdapter;
     private List<LinkModel> mLinkModelList;
@@ -35,7 +35,7 @@ public class LinksFragment extends Fragment {
     }
 
     private void initView() {
-        mListView = (ListView) mView.findViewById(R.id.home_link_listview);
+        mListView = (SwipeDismissListView) mView.findViewById(R.id.home_link_listview);
     }
 
     private void initData() {

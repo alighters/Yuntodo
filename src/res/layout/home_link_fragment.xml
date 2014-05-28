@@ -5,13 +5,13 @@
     android:background="@color/common_bg_color"
     android:orientation="vertical" >
 
-    <ListView
+    <com.oldwei.yifavor.view.SwipeDismissListView
         android:id="@+id/home_link_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
         android:listSelector="@android:color/transparent"
         android:paddingTop="10dp" >
-    </ListView>
+    </com.oldwei.yifavor.view.SwipeDismissListView>
 
 </LinearLayout>
