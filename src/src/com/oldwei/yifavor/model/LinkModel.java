@@ -92,7 +92,7 @@ public class LinkModel implements Parcelable {
         dest.writeInt(categoryId);
         dest.writeInt(orderId);
         dest.writeString(time);
-        
+
     }
 
     public static final Parcelable.Creator<LinkModel> CREATOR = new Creator<LinkModel>() {

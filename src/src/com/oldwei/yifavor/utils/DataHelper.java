@@ -58,6 +58,7 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
     public Dao<CategoryModel, Integer> getCateogoryDao() throws SQLException {
         if (categoryDao == null) {
             categoryDao = getDao(CategoryModel.class);
+            // categoryDao.createIfNotExists(new CategoryModel());
         }
         return categoryDao;
     }
@@ -65,6 +66,7 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
     public Dao<LinkModel, Integer> getLinkDao() throws SQLException {
         if (linkDao == null) {
             linkDao = getDao(LinkModel.class);
+            // linkDao.createIfNotExists(new LinkModel());
         }
         return linkDao;
     }

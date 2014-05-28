@@ -35,8 +35,8 @@ public class CategoryService {
             model.setOrderId(Integer.valueOf(values[0]) + 1);
         categoryDao.createOrUpdate(model);
     }
-    
-    public void update(CategoryModel model) throws SQLException{
+
+    public void update(CategoryModel model) throws SQLException {
         categoryDao.update(model);
     }
 }

@@ -1,9 +1,12 @@
 package com.oldwei.yifavor.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.j256.ormlite.dao.Dao;
+import com.oldwei.yifavor.model.CategoryModel;
 import com.oldwei.yifavor.model.LinkModel;
 import com.oldwei.yifavor.utils.DBHelper;
 
@@ -20,20 +23,22 @@ public class LinkService {
         return list;
     }
 
-    /**
-     * Add a new link.
-     * 
-     * @param model
-     * @return A Integer value, if the value is big than 0, means adding the
-     *         model successfully, else failing to add the model.
-     * @throws SQLException
-     */
-    public int add(LinkModel model) throws SQLException {
-        int result = linkDao.create(model);
-        return result;
+    public void add(LinkModel model) throws SQLException {
+        linkDao.createOrUpdate(model);
     }
 
     public void update(LinkModel model) throws SQLException {
         linkDao.createOrUpdate(model);
+    }
+
+    public List<LinkModel> getLinksByCategory(CategoryModel model) throws SQLException {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("categoryId", model.getId());
+
+        return linkDao.queryForFieldValues(map);
+    }
+
+    public int delete(Integer id) throws SQLException {
+        return linkDao.deleteById(id);
     }
 }
