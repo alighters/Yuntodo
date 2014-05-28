@@ -1,10 +1,13 @@
 package com.oldwei.yifavor.activity;
 
+import java.sql.SQLException;
+
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -12,7 +15,8 @@ import android.widget.LinearLayout;
 import com.oldwei.yifavor.R;
 import com.oldwei.yifavor.fragment.HomeLeftFragment;
 import com.oldwei.yifavor.fragment.LinksFragment;
-import com.oldwei.yifavor.utils.JSONUtils;
+import com.oldwei.yifavor.model.CategoryModel;
+import com.oldwei.yifavor.service.LinkService;
 
 public class HomeActivity extends BaseActivty {
 
@@ -22,6 +26,7 @@ public class HomeActivity extends BaseActivty {
     private LinksFragment mLinkFragment;
     private HomeLeftFragment mHomeLeftFragment;
     private LinearLayout mHomeLeftLayout;
+    private LinkService mLinkService = new LinkService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +65,16 @@ public class HomeActivity extends BaseActivty {
         mHomeLeftFragment.setCategoryItemClickListener(new HomeLeftFragment.CategoryItemClickListener() {
 
             @Override
-            public void checkTitle(String titleName) {
-                mLinkFragment.refreshData(JSONUtils.loadLinkList());
+            public void getCurCategory(CategoryModel model) {
+                try {
+                    mLinkFragment.refreshData(mLinkService.getLinksByCategory(model));
+                } catch (SQLException e) {
+                    Log.e(TAG, e.toString());
+                }
                 mLeftDrawerLayout.closeDrawer(mHomeLeftLayout);
-                setTitle(titleName);
+                setTitle(model.getName());
             }
         });
-
     }
 
     private void initFragment() {

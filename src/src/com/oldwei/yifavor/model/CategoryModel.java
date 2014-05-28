@@ -16,7 +16,7 @@ public class CategoryModel implements Parcelable {
     private int orderId;
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {

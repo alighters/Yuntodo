@@ -2,6 +2,7 @@ package com.oldwei.yifavor;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -13,6 +14,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 public class YiFavorApplication extends Application {
     private static Context mContext;
+    public static final String Prefs = "YiFavorPrefs";
+    private static String IS_FIRST_VISITED = "is_first_visited";
 
     @Override
     public void onCreate() {
@@ -37,4 +40,14 @@ public class YiFavorApplication extends Application {
         ImageLoader.getInstance().init(config);
     }
 
+    public static boolean isFirstVisited() {
+        SharedPreferences sharedPref = mContext.getSharedPreferences(Prefs, Context.MODE_PRIVATE);
+        boolean isFirst = sharedPref.getBoolean(IS_FIRST_VISITED, true);
+        if (isFirst) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(IS_FIRST_VISITED, false);
+            editor.commit();
+        }
+        return isFirst;
+    }
 }

@@ -20,10 +20,10 @@ public class LinkModel implements Parcelable {
     @DatabaseField(unique = true)
     private int orderId;
     @DatabaseField
-    private String time;
+    private String time = "";
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {

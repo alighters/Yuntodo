@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.oldwei.yifavor.R;
+import com.oldwei.yifavor.YiFavorApplication;
 import com.oldwei.yifavor.helper.LoadDataHelper;
 
 public class LoadingActivity extends BaseActivty {
@@ -24,8 +25,8 @@ public class LoadingActivity extends BaseActivty {
     }
 
     private void loadData() {
-        if (DEBUG_MODE) {
-          //  LoadDataHelper.saveCategoriesData();
+        if (YiFavorApplication.isFirstVisited()) {
+            LoadDataHelper.saveCategoriesData();
             LoadDataHelper.saveLinksData();
         }
     }
@@ -33,5 +34,6 @@ public class LoadingActivity extends BaseActivty {
     private void forwardView() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 }

@@ -44,6 +44,7 @@ public class JSONUtils {
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject = jsonArray.getJSONObject(i);
                 vo = new LinkModel();
+                // vo.setId(jsonObject.getInt("id"));
                 vo.setIcon(jsonObject.getString("icon"));
                 vo.setUrl(jsonObject.getString("url"));
                 vo.setTitle(jsonObject.getString("title"));
@@ -88,7 +89,7 @@ public class JSONUtils {
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject = jsonArray.getJSONObject(i);
                 vo = new CategoryModel();
-                vo.setId(jsonObject.getInt("id"));
+                // vo.setId(jsonObject.getInt("id"));
                 vo.setName(jsonObject.getString("name"));
                 LinkModelList.add(vo);
             }

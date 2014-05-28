@@ -73,7 +73,7 @@ public class HomeLeftFragment extends Fragment {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            mCategoryItemClickListener.checkTitle(mCategoryList.get(position).getName());
+            mCategoryItemClickListener.getCurCategory(mCategoryList.get(position));
         }
 
     };
@@ -169,6 +169,6 @@ public class HomeLeftFragment extends Fragment {
     }
 
     public interface CategoryItemClickListener {
-        public void checkTitle(String titleName);
+        public void getCurCategory(CategoryModel model);
     }
 }

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 public class BaseActivty extends ActionBarActivity {
     private ActionBar actionBar;
+    protected String TAG = this.getClass().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

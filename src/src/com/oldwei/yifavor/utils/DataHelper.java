@@ -15,7 +15,7 @@ import com.oldwei.yifavor.model.LinkModel;
 
 public class DataHelper extends OrmLiteSqliteOpenHelper {
     private static final String DATABASE_NAME = "YiFavorOrmLite.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private Dao<CategoryModel, Integer> categoryDao;
     private Dao<LinkModel, Integer> linkDao;
 
@@ -24,7 +24,7 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db, ConnectionSource arg1) {
+    public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
         try {
             TableUtils.createTable(connectionSource, CategoryModel.class);
             TableUtils.createTable(connectionSource, LinkModel.class);
@@ -36,7 +36,7 @@ public class DataHelper extends OrmLiteSqliteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, ConnectionSource arg1, int arg2, int arg3) {
+    public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int arg2, int arg3) {
         try {
             TableUtils.dropTable(connectionSource, CategoryModel.class, true);
             TableUtils.dropTable(connectionSource, LinkModel.class, true);
