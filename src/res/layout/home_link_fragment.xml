@@ -1,17 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.mobeta.android.dslv.DragSortListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dslv="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_link_listview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_bg_color"
-    android:orientation="vertical" >
+    android:divider="@null"
+    android:listSelector="@android:color/transparent"
+    android:paddingTop="10dp"
+    dslv:collapsed_height="2dp"
+    dslv:drag_enabled="true"
+    dslv:drag_scroll_start="0.33"
+    dslv:float_alpha="0.6"
+    dslv:max_drag_scroll_speed="0.5"
+    dslv:slide_shuffle_speed="0.3"
+    dslv:track_drag_sort="false"
+    dslv:use_default_controller="false" >
 
-    <com.oldwei.yifavor.view.SwipeDismissListView
-        android:id="@+id/home_link_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:listSelector="@android:color/transparent"
-        android:paddingTop="10dp" >
-    </com.oldwei.yifavor.view.SwipeDismissListView>
-
-</LinearLayout>
+</com.mobeta.android.dslv.DragSortListView>
