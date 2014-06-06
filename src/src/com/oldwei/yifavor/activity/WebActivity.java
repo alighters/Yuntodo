@@ -46,6 +46,9 @@ public class WebActivity extends Activity {
         mLinkModel = getIntent().getParcelableExtra(WEB_LOADED_LINK);
         mCurrentLinkModel.setUrl(mLinkModel.getUrl());
         initView();
+        if (savedInstanceState != null) {
+            mWebView.restoreState(savedInstanceState);
+        }
         initListener();
         setH5Cache();
         setCacheWay();
@@ -131,10 +134,14 @@ public class WebActivity extends Activity {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void loadView() {
+
         mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         // mWebView.getSettings().setLoadWithOverviewMode(true);
         mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.getSettings().setSavePassword(true);
+        mWebView.getSettings().setSaveFormData(true);
         // mWebView.getSettings().setDefaultZoom(WebSettings.ZoomDensity.FAR);
         mWebView.getSettings().setSupportZoom(true);
         mWebView.getSettings().setBuiltInZoomControls(true);
