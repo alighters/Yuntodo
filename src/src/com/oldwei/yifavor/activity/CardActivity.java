@@ -23,8 +23,8 @@ public class CardActivity extends Activity {
     private List<Card> mCards = new ArrayList<Card>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstnceState) {
+        super.onCreate(savedInstnceState);
         setContentView(R.layout.card_activity);
         initView();
         setData();
